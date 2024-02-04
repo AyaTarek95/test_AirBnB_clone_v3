@@ -15,7 +15,7 @@ def get_reviews(place_id):
     place = storage.get(Place, place_id)
     if not place:
         abort(404)
-    
+
     places = []
     for review in place.reviews:
         places.append(review.to_dict())
@@ -70,11 +70,11 @@ def update_review(review_id):
     """update review by id"""
     review = storage.get(Review, review_id)
     ignored_list = ['id', 'user_id', 'place_id', 'created_at', 'updated_at']
-    
+
     if not review:
         abort(404)
     data = request.get_json()
-    
+
     if not data:
         return make_response("Not a JSON", 400)
     for key, value in data.items():

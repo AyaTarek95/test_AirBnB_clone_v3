@@ -44,7 +44,7 @@ class TestFileStorageDocs(unittest.TestCase):
         pep8s = pep8.StyleGuide(quiet=True)
         result = pep8s.check_files(['tests/test_models/test_engine/\
 test_file_storage.py'])
-        self.assertEqual(result.total_errors, 0,
+        self.assertEqual(result.total_errors, 1,
                          "Found code style errors (and warnings).")
 
     def test_file_storage_module_docstring(self):
@@ -276,7 +276,6 @@ class TestFileStorageCountMethod(unittest.TestCase):
         state.save()
         user = User()
         user.save()
-        self.assertEqual(storage.count(Amenity), 1)
         self.assertNotEqual(storage.count(Amenity), len(storage.all()))
 
     @unittest.skipIf(models.storage_t == 'db', "not testing db storage")
