@@ -11,11 +11,13 @@ from models.state import State
 from models.user import User
 from models import storage
 
+
 @app_views.route('/status')
 def status():
     """ return : "status": "OK"
     if api is running"""
     return jsonify({"status": "OK"})
+
 
 @app_views.route('/stats')
 def stats():
